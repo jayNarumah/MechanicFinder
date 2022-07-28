@@ -24,10 +24,6 @@ class MechanicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -52,17 +48,6 @@ class MechanicController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Mechanic  $mechanic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Mechanic $mechanic)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateMechanicRequest  $request
@@ -82,6 +67,8 @@ class MechanicController extends Controller
      */
     public function destroy(Mechanic $mechanic)
     {
-        //
+        $mechanic->delete();
+
+        return new MechanicResource("Mechanic Was Successfully Deleted!!!", 200);
     }
 }
