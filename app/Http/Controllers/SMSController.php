@@ -9,10 +9,8 @@ use Exception;
 
 class SMSController extends Controller
 {
-    function twilio()
+    function twilioSMS($receiver, $message)
     {
-        $receiver_number = "+2347066352444";
-        $message = "Dear ";
         // Log::alert($message);
 
         try {
@@ -20,10 +18,9 @@ class SMSController extends Controller
             $account_sid = getenv("TWILIO_SID");
             $account_token = getenv("TWILIO_TOKEN");
             $from = getenv("TWILIO_FROM");
-           // Log::info($account_sid);
 
             $client = new Client($account_sid, $account_token);
-            $client->messages->create($receiver_number, [
+            $client->messages->create($receiver, [
                 'from' => $from,
                 'body' => $message]);
 
@@ -32,7 +29,6 @@ class SMSController extends Controller
         } catch (Exception $e) {
             Log::info("Error: ". $e->getMessage());
         }
-
     }
 
 }
