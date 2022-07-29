@@ -10,10 +10,11 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'system_charge',
+        'attribute',
+        'value',
     ];
 
     protected $casts = [
-        'system_charge',
+
     ];
 }

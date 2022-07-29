@@ -17,7 +17,8 @@ class SettingFactory extends Factory
     public function definition()
     {
         return [
-            'system_charge' =>50,
+            'attribute' => 'system_charge',
+            'value' => 50,
         ];
     }
 }

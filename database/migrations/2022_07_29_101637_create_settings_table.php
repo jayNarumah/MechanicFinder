@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('system_charge');
+            $table->string('attribute');
+            $table->string('value');
             $table->timestamps();
         });
     }

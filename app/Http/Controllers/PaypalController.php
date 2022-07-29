@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Setting;
 use Omnipay\Omnipay;
 use App\Models\Payment;
 use Exception\Exception;
-use Omnipay\PayPal\Message\AbstractRestRequest;
 
 class PaypalController extends Controller
 {
@@ -30,9 +30,12 @@ class PaypalController extends Controller
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
         $this->gateway->setTestMode(true); //this will be set false when going live
 
+        $setting = Setting::where('attribute', 'system_charge')->first();
+        $amount = $setting->value;
+
         try{
             $response = $this->gateway->purchase(array(
-                'amount' => 2000,
+                'amount' => $amount,
                 // 'items' => array(
                 //     'name' => 'Mechanic Finding Fee',
                 //     'price' => 2000,
