@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarProductController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\AreaSpecializationController;
+use App\Http\Controllers\PaypalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,7 @@ Route::apiResource('/request', RequestController::class);
 Route::apiResource('/users', UserController::class);
 
 Route::apiResource('/areaspecialization', AreaSpecializationController::class);
+
+Route::any('/payment', [PaypalController::class, 'index']);
+Route::any('/charge', [PaypalController::class, 'charge']);
+Route::any('/success', [PaypalController::class, 'success']);

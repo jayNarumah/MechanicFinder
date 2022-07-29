@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             AreaSpecializationSeeder::class,
             RequestSeeder::class,
             FedbackSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

@@ -11,13 +11,14 @@ class Payment extends Model
 
     protected $fillable = [
         'request_id',
-        'mechanic_id',
+        // 'mechanic_id',
         'amount',
+        'status',
     ];
 
     protected $casts = [
         'request_id' => 'integer',
-        // 'mechanic_id' => 'integer',
+        'payment_id' => 'integer',
         'amount' => 'integer',
     ];
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaypalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
+
+Route::any('/payment', [PaypalController::class, 'index']);
+Route::any('/charge', [PaypalController::class, 'charge']);
+Route::any('/success', [PaypalController::class, 'success']);
+
