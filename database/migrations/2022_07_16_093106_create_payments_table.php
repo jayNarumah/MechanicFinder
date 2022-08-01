@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('request_id');
             $table->string('payment_id');
-            $table->float('amount');
-            $table->string('status');
+            $table->string('payer_id');
+            $table->string('payer_email');
+            $table->float('amount',10,2);
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class Payment extends Model
 
     protected $fillable = [
         'request_id',
-        // 'mechanic_id',
+        'payment_id',
         'amount',
         'status',
     ];
@@ -19,7 +19,7 @@ class Payment extends Model
     protected $casts = [
         'request_id' => 'integer',
         'payment_id' => 'integer',
-        'amount' => 'integer',
+        'amount' => 'float',
     ];
 
     /**

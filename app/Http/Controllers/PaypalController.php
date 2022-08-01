@@ -36,12 +36,14 @@ class PaypalController extends Controller
         try{
             $response = $this->gateway->purchase(array(
                 'amount' => $amount,
-                // 'items' => array(
-                //     'name' => 'Mechanic Finding Fee',
-                //     'price' => 2000,
-                //     'description' => 'Payment for finding a Mechanic',
-                //     'quantity' => 1,
-                // ),
+                'items' => array(
+                    array(
+                        'name' => 'Mechanic Finding Fee',
+                        'price' => $amount,
+                        'description' => 'Payment for finding a Mechanic',
+                        'quantity' => 1
+                    )
+                ),
                 'currency' => env('PAYPAL_CURRENCY'),
                 'returnUrl' => url('success'),
                 'cancelUrl' => url('error'),
@@ -61,11 +63,11 @@ class PaypalController extends Controller
     function success(Request $request)
     {
         //compeleting the transaction after it have been approaved
-        if($request->request_id && $request->payerID)
+        if($request->input('payementId') && $request->input('payerID'))
         {
             $transaction = $this->gateway->completePurchase(array(
-                'payer_id' => $request->request_id,
-                'transactionRefrence' => $request->paymentID,
+                'payer_id' => $request->input('PayerID'),
+                'transactionRefrence' => $request->input('paymentId'),
             ));
 
             $response = $transaction->send();
@@ -75,8 +77,9 @@ class PaypalController extends Controller
                 $arr_body = $response->getData();
                 //inserting the Payment into the database
                 $payment = new Payment;
-                $payment->request_id = $arr_body['payer_id'];
+                $payment->payer_id = $arr_body['payer_id'];
                 $payment->payment_id = $arr_body['id'];
+                $payment->payment_id = $arr_body['payer']['payer_info']['email'];
                 $payment->amount = $arr_body['transactions'][0]['amount']['total'];
                 $payment->status = $arr_body['state'];
                 $payment->save();
