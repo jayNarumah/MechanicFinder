@@ -1,3 +1,4 @@
+//solexadex@gmail.com
 GET http://127.0.0.1:8000/api/payment HTTP/1.1
 Content-Type: application/json
 Accept: application/json
@@ -5,7 +6,6 @@ Accept: application/json
 {
     "request_id": "2",
     "payment_id": "2",
-    "sum": "2000",
     "email": "jawadrumah@gmail.com"
 }
 ###

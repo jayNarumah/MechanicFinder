@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PayStackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,10 @@ Route::get('/', function () {
 
 });
 
+Route::post('/pay/callback', [PayStackController::class, 'payCallback'])->name('pay.callback');
+Route::post('/charge', [PayStackController::class, 'makePayment']);
 Route::any('/payment', [PaypalController::class, 'index']);
+Route::any('/verify-payment/{response}', [PayStackController::class, 'verify']);
 Route::any('/charge', [PaypalController::class, 'charge']);
 Route::any('/success', [PaypalController::class, 'success']);
 
