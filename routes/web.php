@@ -19,7 +19,10 @@ Route::get('/', function () {
     return view('map');
 
 });
+Route::get('/map', function () {
+    return view('route-garage');
 
+});
 Route::post('/pay/callback', [PayStackController::class, 'payCallback'])->name('pay.callback');
 Route::post('/charge', [PayStackController::class, 'makePayment']);
 Route::any('/payment', [PaypalController::class, 'index']);
