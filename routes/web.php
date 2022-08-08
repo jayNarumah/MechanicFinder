@@ -16,7 +16,7 @@ use App\Http\Controllers\PayStackController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('map');
 
 });
 
