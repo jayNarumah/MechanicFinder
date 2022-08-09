@@ -18,6 +18,8 @@ class Mechanic extends Model
         'user_id',
         'status',
         'years_experiance',
+        'loc_lat',
+        'loc_long',
 
     ];
 
@@ -37,6 +39,8 @@ class Mechanic extends Model
     protected $casts = [
         'mechanic_id' => 'integer',
         'years_experiance' => 'integer',
+        'loc_lat' => 'float',
+        'loc_long' => 'float',
     ];
 
     protected $with = [

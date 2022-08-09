@@ -15,9 +15,23 @@
         margin: 0;
         padding: 0;
       }
+      #floating-panel
+      {
+        position: absolute;
+        top: 10px;
+        left: 25%;z-index: 5;
+        background-color: $fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto' 'sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
     </style>
 </head>
 <body>
+    <div id="floating-panel"></div>
     <div id="map"></div>
 
     <script>
@@ -43,6 +57,9 @@
                 map: map,
                 suppressMarkers: true
             });
+            // var onChangeHandler = function(){
+            //     calculateAndDisplayRoute(directionsService, directionsRenderer1)
+            // };
             var directionsRenderer2 = new google.maps.DirectionsRenderer({
                 map: map,
                 suppressMarkers: true,
@@ -75,7 +92,7 @@
                         pi = Math.PI,
                         m = (1 / ((2 * pi / 360) * earth)) / 1000; //1 meter in degree
 
-                    var new_latitude = pos.lat + (600 * m);
+                    var new_latitude = pos.lat + (500 * m);
                     var new_pos = {
                         lat: new_latitude,
                         lng: position.coords.longitude
@@ -99,6 +116,7 @@
                                 travelMode: 'DRIVING',
                                 provideRouteAlternatives: true
                             },
+
                             function(response, status) {
                                 if (status === 'OK') {
 
@@ -135,6 +153,8 @@
                 'Error: Your browser doesn\'t support geolocation.');
             infoWindow.open(map);
         }
+
+        // function calculateAndDispalayRoute
 
     </script>
 
