@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PayStackController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/map', function () {
     return view('route-garage');
 
 });
+Route::get('/terms-and-conditions', [NotificationController::class, 'termsConditions']);
 Route::post('/pay/callback', [PayStackController::class, 'payCallback'])->name('pay.callback');
 Route::post('/charge', [PayStackController::class, 'makePayment']);
 Route::any('/payment', [PaypalController::class, 'index']);

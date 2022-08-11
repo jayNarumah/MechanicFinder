@@ -7,6 +7,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\CarProductController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AreaSpecializationController;
 
 /*
@@ -42,3 +43,4 @@ Route::get('/request-count', [StatisticController::class, 'payment']);
 Route::any('/payment', [PaypalController::class, 'index']);
 Route::any('/charge', [PaypalController::class, 'charge']);
 Route::any('/success', [PaypalController::class, 'success']);
+Route::get('/terms-and-conditions', [NotificationController::class, 'termsConditions']);
