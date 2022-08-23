@@ -16,6 +16,7 @@ class Request extends Model
         'description',
         'request_date',
         'status',
+        'location',
     ];
 
     protected $casts = [

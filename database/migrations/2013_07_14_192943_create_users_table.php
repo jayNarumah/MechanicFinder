@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_type_id')->constrained();
             $table->string('name');
             $table->string('email');
+            $table->string('address');
             $table->string('password');
             $table->string('phone_number');
             $table->string('image')->nullable();
@@ -33,5 +34,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+      
     }
 };

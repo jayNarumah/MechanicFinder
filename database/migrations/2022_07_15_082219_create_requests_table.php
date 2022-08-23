@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('car_product_id')->constrained()->onDelete('restrict');
             $table->string('description')->nullable();
             $table->string('status')->nullable();
+            $table->string('location')->nullable();
             $table->dateTime('request_date');
             $table->timestamps();
         });
