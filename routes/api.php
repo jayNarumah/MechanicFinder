@@ -3,10 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CarProductController;
-use App\Http\Controllers\RequestController;
-use App\Http\Controllers\AreaSpecializationController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\CarProductController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AreaSpecializationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,12 @@ Route::apiResource('/users', UserController::class);
 
 Route::apiResource('/areaspecialization', AreaSpecializationController::class);
 
+Route::get('/mechanic-count', [StatisticController::class, 'mechanic']);
+Route::get('/user-count', [StatisticController::class, 'user']);
+Route::get('/request-count', [StatisticController::class, 'request']);
+Route::get('/request-count', [StatisticController::class, 'payment']);
+
 Route::any('/payment', [PaypalController::class, 'index']);
 Route::any('/charge', [PaypalController::class, 'charge']);
 Route::any('/success', [PaypalController::class, 'success']);
+Route::get('/terms-and-conditions', [NotificationController::class, 'termsConditions']);

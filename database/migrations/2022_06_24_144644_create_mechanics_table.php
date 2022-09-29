@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('years_experiance');
+            $table->float('loc_lat', 10, 5);
+            $table->float('loc_long', 10, 5);
             $table->string('status');
             $table->timestamps();
         });

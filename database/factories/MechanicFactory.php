@@ -20,6 +20,8 @@ class MechanicFactory extends Factory
         return [
             'years_experiance' => $this->faker->numberBetween(1, 50),
             'user_id' => User::inRandomOrder()->first(),
+            'loc_lat' => 28.33333,
+            'loc_long' => 25.222244,
             'status' => 'active',
 
         ];

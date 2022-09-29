@@ -16,7 +16,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return PaymentResource::collection(Payment::all(), 200);
+        return PaymentResource::collection(Payment::all()->load('request'), 200);
     }
 
     /**
